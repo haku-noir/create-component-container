@@ -2,7 +2,9 @@
   "name": "create-component-container",
   "version": "1.0.0",
   "description": "Create React-Component &amp; Redux-Container",
-  "main": "index.js",
+  "bin": {
+    "create-component-container": "create-component-container"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
