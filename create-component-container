@@ -8,6 +8,20 @@ program
   .version(require(`${__dirname}/package.json`).version, '-v, --version')
   .parse(process.argv);
 
+const getSrcDir = dir => {
+  let srcDir = `${dir}/src`;
+
+  dir.split('/').forEach((dirItem, index) => {
+    if(dirItem === 'src')
+      srcDir = dir.split('/').slice(0, index).join('/') + '/src';
+  });
+
+  return srcDir;
+}
+
+const srcDir = getSrcDir(process.cwd());
+console.log(srcDir);
+
 Promise.resolve()
   .then(() => console.log('create-component-container'))
   .catch(err => {
