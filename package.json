@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/haku-noir/create-component-container.git"
   },
-  "author": "Riku Hatano <hakunoir.00@gmail.com> (https://qiita.com/haku-noir)",
+  "author": "haku-noir",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/haku-noir/create-component-container/issues"
