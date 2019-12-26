@@ -2,6 +2,7 @@
 'use strict'
 
 const program = require('commander');
+const fs = require('fs-extra');
 
 program
   .usage('<component_name>')
@@ -17,13 +18,16 @@ const getSrcDir = dir => {
   });
 
   return srcDir;
-}
+};
 
 const srcDir = getSrcDir(process.cwd());
 console.log(srcDir);
 
 Promise.resolve()
-  .then(() => console.log('create-component-container'))
+  .then(() => fs.readFile(`${__dirname}/minimum/minimumComponent.tsx`, 'utf8'))
+  .then(data => fs.outputFile(`${srcDir}/components/XXXComponent.tsx`, data))
+  .then(() => fs.readFile(`${__dirname}/minimum/minimumContainer.ts`, 'utf8'))
+  .then(data => fs.outputFile(`${srcDir}/containers/XXXContainer.ts`, data))
   .catch(err => {
     console.log('Fail!');
     console.error(err)
