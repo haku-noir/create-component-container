@@ -20,14 +20,29 @@ const getSrcDir = dir => {
   return srcDir;
 };
 
+const getHeadUpper = str => str.slice(0, 1).toUpperCase() + str.slice(1);
+
 const srcDir = getSrcDir(process.cwd());
-console.log(srcDir);
+
+const name = program.args[0];
+if(!name){
+  console.log('<component_name> is required\n');
+  console.log(program.help());
+  process.exit();
+}
+const XXX = getHeadUpper(name);
 
 Promise.resolve()
   .then(() => fs.readFile(`${__dirname}/minimum/minimumComponent.tsx`, 'utf8'))
-  .then(data => fs.outputFile(`${srcDir}/components/XXXComponent.tsx`, data))
+  .then(data => {
+    const replacedData = data.replace(/XXX/g, XXX);
+    return fs.outputFile(`${srcDir}/components/${XXX}.tsx`, replacedData);
+  })
   .then(() => fs.readFile(`${__dirname}/minimum/minimumContainer.ts`, 'utf8'))
-  .then(data => fs.outputFile(`${srcDir}/containers/XXXContainer.ts`, data))
+  .then(data => {
+    const replacedData = data.replace(/XXX/g, XXX);
+    return fs.outputFile(`${srcDir}/containers/${XXX}.ts`, replacedData);
+  })
   .catch(err => {
     console.log('Fail!');
     console.error(err)

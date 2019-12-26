@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { RootState } from '/store';
-import { XXX, XXXStateAsProps, XXXDispatchAsProps } from '/components/XXX';
+import { RootState } from 'store';
+import { XXX, XXXStateAsProps, XXXDispatchAsProps } from 'components/XXX';
 
 const mapStateToProps = (rootState: RootState): XXXStateAsProps => ({});
 
