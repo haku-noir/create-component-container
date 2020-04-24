@@ -23,12 +23,12 @@ module.exports = (name) => {
   const XXX = getHeadUpper(name);
 
   Promise.resolve()
-    .then(() => fs.readFile(`${__dirname}/minimum/minimumComponent.tsx`, 'utf8'))
+    .then(() => fs.readFile(`${__dirname}/sample/sampleComponent.tsx`, 'utf8'))
     .then(data => {
       const replacedData = data.replace(/XXX/g, XXX);
       return fs.outputFile(`${srcDir}/components/${XXX}.tsx`, replacedData);
     })
-    .then(() => fs.readFile(`${__dirname}/minimum/minimumContainer.ts`, 'utf8'))
+    .then(() => fs.readFile(`${__dirname}/sample/sampleContainer.ts`, 'utf8'))
     .then(data => {
       const replacedData = data.replace(/XXX/g, XXX);
       return fs.outputFile(`${srcDir}/containers/${XXX}.ts`, replacedData);
