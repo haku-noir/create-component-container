@@ -6,6 +6,7 @@ const program = require('commander');
 program
   .name('create-component-container')
   .usage('<component_name>')
+  .description('create a React component & a Redux container')
   .version(require(`${__dirname}/package.json`).version, '-v, --version')
   .parse(process.argv);
 
