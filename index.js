@@ -13,7 +13,7 @@ const getSrcDir = dir => {
 
 const getHeadUpper = str => str.slice(0, 1).toUpperCase() + str.slice(1);
 
-module.exports = (name) => {
+module.exports = (name, minimum) => {
   const srcDir = getSrcDir(process.cwd());
 
   if(!name){
@@ -23,13 +23,22 @@ module.exports = (name) => {
   const XXX = getHeadUpper(name);
 
   Promise.resolve()
-    .then(() => fs.readFile(`${__dirname}/sample/sampleComponent.tsx`, 'utf8'))
+    .then(() => (
+      minimum ?
+      fs.readFile(`${__dirname}/minimum/minimumComponent.tsx`, 'utf8') :
+      fs.readFile(`${__dirname}/sample/sampleComponent.tsx`, 'utf8')
+    ))
     .then(data => {
       const replacedData = data.replace(/XXX/g, XXX);
       return fs.outputFile(`${srcDir}/components/${XXX}.tsx`, replacedData);
     })
-    .then(() => fs.readFile(`${__dirname}/sample/sampleContainer.ts`, 'utf8'))
+    .then(() => (
+      minimum ?
+        null :
+        fs.readFile(`${__dirname}/sample/sampleContainer.ts`, 'utf8')
+    ))
     .then(data => {
+      if(!data) return null;
       const replacedData = data.replace(/XXX/g, XXX);
       return fs.outputFile(`${srcDir}/containers/${XXX}.ts`, replacedData);
     })

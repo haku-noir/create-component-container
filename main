@@ -5,9 +5,10 @@ const program = require('commander');
 
 program
   .name('create-component-container')
-  .usage('<component_name>')
+  .usage('<component_name> [options]')
   .description('create a React component & a Redux container')
+  .option('-m, --minimum', 'only a React component without a Redux container')
   .version(require(`${__dirname}/package.json`).version, '-v, --version')
   .parse(process.argv);
 
-require(".")(program.args[0]);
+require(".")(program.args[0], program.minimum);
