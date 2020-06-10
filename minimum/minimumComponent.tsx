@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-export type XXXProps = {};
+type IProps = {};
 
-export const XXX: React.FC<XXXProps> = (props: XXXProps) => {
+export const XXX: React.FC<IProps> = (props: IProps) => {
   return (
     <div></div>
   );
