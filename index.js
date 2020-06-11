@@ -26,7 +26,7 @@ module.exports = (name, minimum) => {
     .then(() => (
       minimum ?
       fs.readFile(`${__dirname}/minimum/minimumComponent.tsx`, 'utf8') :
-      fs.readFile(`${__dirname}/sample/sampleComponent.tsx`, 'utf8')
+      fs.readFile(`${__dirname}/hooks/hooksComponent.tsx`, 'utf8')
     ))
     .then(data => {
       const replacedData = data.replace(/XXX/g, XXX);
@@ -35,12 +35,12 @@ module.exports = (name, minimum) => {
     .then(() => (
       minimum ?
         null :
-        fs.readFile(`${__dirname}/sample/sampleContainer.ts`, 'utf8')
+        fs.readFile(`${__dirname}/hooks/hooksContainer.tsx`, 'utf8')
     ))
     .then(data => {
       if(!data) return null;
       const replacedData = data.replace(/XXX/g, XXX);
-      return fs.outputFile(`${srcDir}/containers/${XXX}.ts`, replacedData);
+      return fs.outputFile(`${srcDir}/containers/${XXX}CTR.tsx`, replacedData);
     })
     .catch(err => {
       console.log('Fail!');
