@@ -9,7 +9,9 @@ type IProps = {};
 export const XXX: React.FC<IProps> = (props: IProps) => {
   const dispatch = useDispatch<Dispatch<Action>>();
 
-  const state = useSelector<RootState, RootState>(state => state);
+  const data = useSelector<RootState, RootState>(
+    state => state
+  );
 
   const _props = {}
 

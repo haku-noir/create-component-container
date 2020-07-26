@@ -1,6 +1,6 @@
 {
   "name": "create-component-container",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Create React-Component &amp; Redux-Container",
   "bin": {
     "create-component-container": "main"
